@@ -1,24 +1,37 @@
-
 <body>
+  <div class="container">
+    <h1><%= day %></h1>
+    <h2><%= title %></h2>
+    <form action="/" method="POST">
+      <input
+        type="text"
+        name="task"
+        placeholder="Add task here..."
+        autofocus
+        autocomplete="off"
+      /><br />
+      <button type="submit" class="btn" name="list" value="<%= title %>">
+        Add Task
+      </button>
+    </form>
+    <form action="/delete" method="POST">
+      <button type="submit" class="btn" name="button" value="<%= title %>">
+        Delete Tasks
+      </button>
+    </form>
 
-  <div class="container"> 
-    <h1> <%= day %></h1>
-    <h2> <%= title %></h2>
-   <form action="/" method="POST">
-    <input type="text" name="task" placeholder="Add task here..." autofocus autocomplete="off"><br>
-    <button type="submit" class="btn" name="button" value="<%= title %>">Add Task</button>
-   </form>
-   <div class="list">
-    <% if (newTasks) { %>
-    <ul>
-      <% for (let task of newTasks) { %>
-        <li> <%= task %> </li>
-    <%  } %> 
-    </ul>
-    <% } %> 
-  </div>  
-</div>
-
+    <div class="list">
+      <% if (tasks) { %>
+      <ul>
+        <% for (let task of tasks) { %>
+        <form action="/deleteOne" method="POST">
+          <input type="checkbox" name="checkbox" value="<%=task._id%>" onChange="this.form.submit()">
+          <li><%= task.name %></li>
+          <input type="hidden" name="listName" value="<%= title %>">
+        </form>
+        <% } %>
+      </ul>
+      <% } %>
+    </div>
+  </div>
 </body>
-
-
