@@ -149,5 +149,5 @@ app.get("/:customList", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log("Listening on port 3000...");
+  console.log("Server has successfully started...");
 });
