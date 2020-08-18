@@ -13,7 +13,7 @@ const username = process.env.USERNAME;
 const password = process.env.PASSWORD;
 
 // Connect to the 'tasksDB' DB using Mongoose, create the DB if it isnt there already.
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.hv9jl.mongodb.net/tasksDB`, {
+mongoose.connect('mongodb+srv://'+username+':'+password+'@cluster0.hv9jl.mongodb.net/tasksDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
