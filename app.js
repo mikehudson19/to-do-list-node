@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
@@ -5,8 +6,11 @@ const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const _ = require('lodash');
 
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
+
 // Connect to the 'tasksDB' DB using Mongoose, create the DB if it isnt there already.
-mongoose.connect("mongodb+srv://mikehudson19:nineteen19@cluster0.hv9jl.mongodb.net/tasksDB", {
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.hv9jl.mongodb.net/tasksDB`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -146,7 +150,7 @@ app.get("/:customList", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log("Server has successfully started...");
